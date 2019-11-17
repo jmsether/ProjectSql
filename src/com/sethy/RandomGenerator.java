@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
-public class NameGenerator {
+public class RandomGenerator {
 
     private ArrayList<String> fNames = new ArrayList<String>();
     private ArrayList<String> lNames = new ArrayList<String>();
@@ -45,7 +45,7 @@ public class NameGenerator {
         file.close();
     }
 
-    public NameGenerator() throws IOException, URISyntaxException {
+    public RandomGenerator() throws IOException, URISyntaxException {
 
         Scanner f = new Scanner(new File(getClass().getResource("names/fNames.txt").toURI()));
 
@@ -85,21 +85,19 @@ public class NameGenerator {
     }
 
     private String apt(){
-        if(r.nextInt(1) == 1){
-            return "#" + r.nextInt(999);
+        if(r.nextInt(4) == 0){
+            return " #" + r.nextInt(999);
         }else{
             return "";
         }
     }
 
     public String getRAddress(){
-        String x = "" +
-                r.nextInt(999) +
-                places.get(r.nextInt(places.size())) +
+        return  "" +
+                r.nextInt(9999) + " " +
+                places.get(r.nextInt(places.size())) + " " +
                 streetT() +
                 apt();
-
-        return x;
 
     }
 
@@ -109,6 +107,32 @@ public class NameGenerator {
 
     public String getState(){
         return states.get(r.nextInt(states.size()));
+    }
+
+    public String getZipCode(){
+        int x = r.nextInt(9);
+        for(int i = 0; i < 4;i++){
+            x = (x*10) + r.nextInt(9);
+        }
+        return String.valueOf(x);
+    }
+
+    public String getPhoneNum(){
+        return  "("+
+                r.nextInt(999)+
+                ") "+
+                r.nextInt(999)+
+                "-"+
+                r.nextInt(9999);
+    }
+
+    public String getRNum(int limit){
+        int x = 9;
+        for(int i = 0; i < limit; i++){
+            x=(x*10)+9;
+        }
+
+        return String.valueOf(r.nextInt(x));
     }
 
     public String getRName(Boolean sirName){

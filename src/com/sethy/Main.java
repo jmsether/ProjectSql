@@ -1,9 +1,7 @@
 package com.sethy;
-import com.microsoft.sqlserver.jdbc.*;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.sql.*;
 
 
 public class Main {
@@ -68,15 +66,17 @@ public class Main {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }*/
-        NameGenerator g = null;
+        RandomGenerator g = null;
         try {
-            g = new NameGenerator();
+            g = new RandomGenerator();
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
 
         for(int i = 0; i < 10; i++){
-            System.out.println(g.getRName(false) + " " + g.getRName(true));
+            //System.out.println(g.getRName(false) + " " + g.getRName(true));
+            new User(g).print();
+
         }
     }
 }

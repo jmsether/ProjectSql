@@ -1,6 +1,6 @@
 package com.sethy;
 
-public class User {
+public class User extends Table {
     /*
     === TABLE: users
 	user_id - int(10)
@@ -30,14 +30,31 @@ public class User {
         this.last_name = last_name;
     }
 
+    public User(RandomGenerator g){
+        rGen(g);
+    }
 
+    public void print(){
+        System.out.println("-----------------");
+        System.out.println(first_name + " " + last_name);
+        System.out.println("W: " + w_num);
+        System.out.println("P: " + phone);
+        System.out.println(address);
+        System.out.println(city + ", " + state + " " + postalcode);
 
-    public boolean rGen(NameGenerator generator){
+        System.out.println("-----------------");
+
+    }
+
+    public boolean rGen(RandomGenerator generator){
         first_name = generator.getRName(false);
-        first_name = generator.getRName(false);
+        last_name = generator.getRName(true);
         address = generator.getRAddress();
         city = generator.getCity();
         state = generator.getState();
+        postalcode = generator.getZipCode();
+        phone = generator.getPhoneNum();
+        w_num = "w"+ generator.getRNum(12);
 
 
         return true;
