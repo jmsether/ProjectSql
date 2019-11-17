@@ -31,6 +31,7 @@ public class User implements Table {
             "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private String sqlLastId = "SELECT TOP 1 user_id FROM users ORDER BY user_id DESC";
+    private String sqlGetW_num = "SELECT user_id FROM users where w_num = ?";
 
     private void setLastId() {
 
@@ -80,6 +81,30 @@ public class User implements Table {
 
     }
 
+    private int checkWnum(int x){
+        try{
+
+            PreparedStatement statement = connection.getConn().prepareStatement(sqlGetW_num);
+            statement.setString(1,"W"+x);
+            ResultSet result = statement.executeQuery();
+            if(result.next()){
+                System.err.println("W number already exists trying next number up");
+                return checkWnum(x+1);
+            }else{
+                return x;
+            }
+
+
+
+
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+        return x;
+    }
+
     public boolean rGen(RandomGenerator generator){
         first_name = generator.getRName(false);
         last_name = generator.getRName(true);
@@ -88,7 +113,7 @@ public class User implements Table {
         state = generator.getState();
         postalcode = generator.getZipCode();
         phone = generator.getPhoneNum();
-        w_num = "W"+ generator.getRNum(12);
+        w_num = "W"+ checkWnum(Integer.valueOf(generator.getRNum(12)));
 
         if(user_id == 0){
             setLastId();

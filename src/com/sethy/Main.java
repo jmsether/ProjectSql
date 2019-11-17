@@ -76,7 +76,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10000; i++){
             //System.out.println(g.getRName(false) + " " + g.getRName(true));
             new User(g).submit();
 
