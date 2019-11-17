@@ -16,12 +16,16 @@ public final class SqlConnection {
     *  */
     private static volatile SqlConnection connection = null;
 
+    //JDBC does not work well with Windows auth. Please use sql login instead
     private String dbURL = "jdbc:sqlserver://127.0.0.1:1434";
-    private String user = "root";
-    private String pass = "letmein";
+    private String user = "root"; // <- you will need to add this user to the ssms database
+    private String pass = "letmein";// <- use this password for the database pls
 
     Connection conn = null;
 
+    /*This is fired only once with anything from this class is called.
+    * THis is using a JIT method to load this class there for we will
+    * only connect to the database when it is time to.*/
     private SqlConnection(){
 
         //Connection conn = null;
@@ -95,10 +99,19 @@ public final class SqlConnection {
 
     public boolean isConnected(){
         if (conn != null) {
-            System.out.println("Connected");
+            //System.out.println("Connected");
             return true;
         }else{
             return false;
+        }
+    }
+
+    // not being called yet
+    public void closeConnection(){
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

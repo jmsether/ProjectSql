@@ -1,5 +1,9 @@
 package com.sethy;
 
-public class Table {
-    SqlConnection connection = SqlConnection.getInstance();
+public interface Table {
+    final static SqlConnection connection = SqlConnection.getInstance();
+
+
+    //Always override this.
+    public boolean submit();
 }

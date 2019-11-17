@@ -1,6 +1,6 @@
 package com.sethy;
 
-public class User extends Table {
+public class User implements Table {
     /*
     === TABLE: users
 	user_id - int(10)
@@ -31,7 +31,9 @@ public class User extends Table {
     }
 
     public User(RandomGenerator g){
-        rGen(g);
+        if(connection.isConnected()){
+            rGen(g);
+        }
     }
 
     public void print(){
@@ -61,5 +63,8 @@ public class User extends Table {
     }
 
 
-
+    @Override
+    public boolean submit() {
+        return false;
+    }
 }
