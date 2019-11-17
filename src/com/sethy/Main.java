@@ -2,6 +2,7 @@ package com.sethy;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.sql.*;
 
 
 public class Main {
@@ -27,8 +28,9 @@ public class Main {
         //System.out.println("Connecting to database");
 
         String sql = "SELECT * FROM users";
-        /*
 
+
+        /*
         try (Connection conn = DriverManager.getConnection(url, user, pass)) {
 
             DatabaseMetaData meta = conn.getMetaData();
@@ -66,6 +68,7 @@ public class Main {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }*/
+        SqlConnection.getInstance();
         RandomGenerator g = null;
         try {
             g = new RandomGenerator();
@@ -73,9 +76,9 @@ public class Main {
             e.printStackTrace();
         }
 
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 100; i++){
             //System.out.println(g.getRName(false) + " " + g.getRName(true));
-            new User(g).print();
+            new User(g).submit();
 
         }
     }

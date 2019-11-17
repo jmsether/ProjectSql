@@ -127,20 +127,16 @@ public class RandomGenerator {
 
     //Returns a random zipcode
     public String getZipCode(){
-        int x = r.nextInt(9);
-        for(int i = 0; i < 4;i++){
-            x = (x*10) + r.nextInt(9);
-        }
-        return String.valueOf(x);
+        return getFRNum(5);
     }
 
     //returns a random generated number formatted
     public String getPhoneNum(){
-        return  "("+
+        return  ""+
                 getFRNum(3)+
-                ") "+
+                ""+
                 getFRNum(3)+
-                "-"+
+                ""+
                 getFRNum(4);
     }
 

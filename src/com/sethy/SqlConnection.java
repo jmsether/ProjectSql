@@ -26,6 +26,11 @@ public final class SqlConnection {
     /*This is fired only once with anything from this class is called.
     * THis is using a JIT method to load this class there for we will
     * only connect to the database when it is time to.*/
+
+    public void connect(){
+
+    }
+
     private SqlConnection(){
 
         //Connection conn = null;
@@ -48,14 +53,6 @@ public final class SqlConnection {
             }
         }catch (SQLException ex) {
             ex.printStackTrace();
-        } finally {
-            try {
-                if (conn != null && !conn.isClosed()) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
         }
         /*
         try (Connection conn = DriverManager.getConnection(url, user, pass)) {
@@ -95,6 +92,14 @@ public final class SqlConnection {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }*/
+    }
+
+    public Connection getConn(){
+        return conn;
+    }
+
+    public Statement statement() throws SQLException {
+        return conn.createStatement();
     }
 
     public boolean isConnected(){
