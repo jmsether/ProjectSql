@@ -1,6 +1,8 @@
 package com.sethy;
 import com.microsoft.sqlserver.jdbc.*;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.*;
 
 
@@ -27,7 +29,7 @@ public class Main {
         System.out.println("Connecting to database");
 
         String sql = "SELECT * FROM users";
-
+        /*
 
         try (Connection conn = DriverManager.getConnection(url, user, pass)) {
 
@@ -65,6 +67,16 @@ public class Main {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
+        }*/
+        NameGenerator g = null;
+        try {
+            g = new NameGenerator();
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        for(int i = 0; i < 10; i++){
+            System.out.println(g.getRName(false) + " " + g.getRName(true));
         }
     }
 }
