@@ -119,11 +119,19 @@ public class RandomGenerator {
 
     public String getPhoneNum(){
         return  "("+
-                r.nextInt(999)+
+                getFRNum(3)+
                 ") "+
-                r.nextInt(999)+
+                getFRNum(3)+
                 "-"+
-                r.nextInt(9999);
+                getFRNum(4);
+    }
+
+    public String getFRNum(int limit){
+        int x = 1+r.nextInt(9);
+        for(int i = 0; i < limit-1;i++){
+            x = (x*10) + r.nextInt(9);
+        }
+        return String.valueOf(x);
     }
 
     public String getRNum(int limit){

@@ -54,7 +54,7 @@ public class User extends Table {
         state = generator.getState();
         postalcode = generator.getZipCode();
         phone = generator.getPhoneNum();
-        w_num = "w"+ generator.getRNum(12);
+        w_num = "W"+ generator.getRNum(12);
 
 
         return true;
