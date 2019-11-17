@@ -9,6 +9,11 @@ import java.util.Random;
 
 public class RandomGenerator {
 
+    //TODO
+    /*Someone please re-arrange these functions so they are a bit more readable
+    * or at least make sense on the arrangement
+    */
+
     //These can be changed or added to from the files in the names folder.
     //DO NOT RENAME FILES
     private ArrayList<String> fNames = new ArrayList<String>();

@@ -24,7 +24,7 @@ public class Main {
         String user = "root";
         String pass = "letmein";
         //Connection conn = null;
-        System.out.println("Connecting to database");
+        //System.out.println("Connecting to database");
 
         String sql = "SELECT * FROM users";
         /*

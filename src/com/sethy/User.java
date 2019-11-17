@@ -41,7 +41,7 @@ public class User extends Table {
         System.out.println("P: " + phone);
         System.out.println(address);
         System.out.println(city + ", " + state + " " + postalcode);
-
+        //connection.isConnected();
         System.out.println("-----------------");
 
     }
