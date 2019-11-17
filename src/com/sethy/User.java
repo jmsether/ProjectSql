@@ -32,8 +32,12 @@ public class User {
 
 
 
-    public boolean rGen(){
-
+    public boolean rGen(NameGenerator generator){
+        first_name = generator.getRName(false);
+        first_name = generator.getRName(false);
+        address = generator.getRAddress();
+        city = generator.getCity();
+        state = generator.getState();
 
 
         return true;

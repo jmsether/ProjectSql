@@ -12,7 +12,28 @@ public class NameGenerator {
     private ArrayList<String> fNames = new ArrayList<String>();
     private ArrayList<String> lNames = new ArrayList<String>();
     private ArrayList<String> places = new ArrayList<String>();
+    private ArrayList<String> states = new ArrayList<String>();
+
+    private String[] streetType = {
+            "Road",
+            "Street",
+            "Drive",
+            "Circle",
+            "Avenue",
+            "Place",
+            "Lane",
+            "Grove",
+            "Gardens",
+            "Way",
+            "Square",
+            "Row",
+            "Rise",
+            "Vale"
+    };
+
     private Random r =  new Random();
+
+
 
     private void loadArrayList(ArrayList list, Scanner file){
         while(file.hasNextLine()){
@@ -31,6 +52,8 @@ public class NameGenerator {
         loadArrayList(fNames,new Scanner(new File(getClass().getResource("names/fNames.txt").toURI())));
         loadArrayList(lNames,new Scanner(new File(getClass().getResource("names/lNames.txt").toURI())));
         loadArrayList(places,new Scanner(new File(getClass().getResource("names/places.txt").toURI())));
+        loadArrayList(states,new Scanner(new File(getClass().getResource("names/states.txt").toURI())));
+
 
         //places.forEach((x) -> System.out.println("Added: "+ x));
         System.out.println("Generator loaded");
@@ -57,7 +80,36 @@ public class NameGenerator {
          */
     }
 
+    private String streetT(){
+        return streetType[r.nextInt(streetType.length)];
+    }
 
+    private String apt(){
+        if(r.nextInt(1) == 1){
+            return "#" + r.nextInt(999);
+        }else{
+            return "";
+        }
+    }
+
+    public String getRAddress(){
+        String x = "" +
+                r.nextInt(999) +
+                places.get(r.nextInt(places.size())) +
+                streetT() +
+                apt();
+
+        return x;
+
+    }
+
+    public String getCity(){
+        return places.get(r.nextInt(places.size()));
+    }
+
+    public String getState(){
+        return states.get(r.nextInt(states.size()));
+    }
 
     public String getRName(Boolean sirName){
         if(sirName){
