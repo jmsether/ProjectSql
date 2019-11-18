@@ -10,7 +10,7 @@ public class Student extends User {
 
 
     private ArrayList<Assignment> assignments;
-    private ArrayList<SubmittedAssignment> submittedAssignments;
+    private ArrayList<SubmittedAssignment> submittedAssignments = new ArrayList<SubmittedAssignment>();
 
     public Student(RandomGenerator g) {
         super(g);
@@ -24,6 +24,7 @@ public class Student extends User {
         this.state = rUser.state;
         this.postalcode = rUser.postalcode;
         this.phone = rUser.phone;
+        this.user_id = rUser.user_id;
     }
 
     public void setAssignments(ArrayList assignments) {
@@ -44,13 +45,16 @@ public class Student extends User {
             submittedAssignments.get(i).setSubmission_date(addHoursToJavaUtilDate(assignments.get(i).getDue_date(),-generator.getNextInt(7*24)));
 
         }
+        submittedAssignments.forEach(x->x.setUser_id(user_id));
+        submittedAssignments.forEach(x->x.submit());
+
     }
 
 
 
     public void print(){
         super.print();
-        //submittedAssignments.forEach(x ->System.out.println(x.getName()+":"+x.getDue_date()+":"+x.getPoints()+":"+x.getScore()+":"+x.getSubmission_date()));
+        submittedAssignments.forEach(x ->System.out.println(x.getName()+":"+x.getDue_date()+":"+x.getPoints()+":"+x.getScore()+":"+x.getSubmission_date()));
     }
 
     public Student(){

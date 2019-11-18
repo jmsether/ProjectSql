@@ -131,6 +131,9 @@ public class RandomGenerator {
     private Random r =  new Random();
 
     public int getNextInt(int x){
+        if(x<1){
+            x = 1;
+        }
         return r.nextInt(x);
     }
 

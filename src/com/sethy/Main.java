@@ -79,14 +79,16 @@ public class Main {
         for(int i = 0; i < 100; i++){
             //System.out.println(g.getRName(false) + " " + g.getRName(true));
             g.addUser(new User(g));
-            //g.getLastUser().submit();
+            g.getLastUser().submit();
             //System.out.println(g.getRClassType());
             //System.out.println(g.getRClassNum());
+            Course c = new Course(g);
+            c.submit();
 
 
         }
 
-        Course c = new Course(g);
+        //Course c = new Course(g);
     }
 }
 
