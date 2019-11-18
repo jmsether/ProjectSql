@@ -19,7 +19,7 @@ public class Course implements Table {
     private Assignment[] assignments;
 
     public Course(RandomGenerator generator){
-
+        rGen(generator);
     }
 
     public void rGen(RandomGenerator generator){

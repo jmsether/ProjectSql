@@ -33,6 +33,7 @@ public class User implements Table {
     private String sqlLastId = "SELECT TOP 1 user_id FROM users ORDER BY user_id DESC";
     private String sqlGetW_num = "SELECT user_id FROM users where w_num = ?";
 
+    public User(){}
     private void setLastId() {
 
         try{
