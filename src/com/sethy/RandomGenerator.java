@@ -121,9 +121,18 @@ public class RandomGenerator {
 
     };
 
+    private String assignmentType[] = {
+            "Project",
+            "Lab",
+            "Homework"
+    };
+
     //Used heavily in this class to generate random ints
     private Random r =  new Random();
 
+    public int getNextInt(int x){
+        return r.nextInt(x);
+    }
 
     //Loads an arraylist from a giving file on disk
     private void loadArrayList(ArrayList list, Scanner file){
@@ -169,6 +178,11 @@ public class RandomGenerator {
         f.close();
 
          */
+    }
+
+    //return a random assignment name
+    public String getRAssignmentName(){
+        return assignmentType[r.nextInt(assignmentType.length)];
     }
 
     //return a random class type

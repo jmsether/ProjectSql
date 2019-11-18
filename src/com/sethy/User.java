@@ -17,15 +17,15 @@ public class User implements Table {
 	Primary Key Column: user_id
     */
 
-    private int user_id = 0;
-    private String w_num;
-    private String first_name;
-    private String last_name;
-    private String address;
-    private String city;
-    private String state;
-    private String postalcode;
-    private String phone;
+    protected int user_id = 0;
+    protected String w_num;
+    protected String first_name;
+    protected String last_name;
+    protected String address;
+    protected String city;
+    protected String state;
+    protected String postalcode;
+    protected String phone;
 
     private String sqlSubmitUser = "insert into users(user_id, w_num, first_name, last_name, address, city, state, postalcode, phone)" +
             "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
