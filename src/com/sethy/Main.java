@@ -76,9 +76,12 @@ public class Main {
             e.printStackTrace();
         }
 
-        for(int i = 0; i < 10000; i++){
+        for(int i = 0; i < 10; i++){
             //System.out.println(g.getRName(false) + " " + g.getRName(true));
-            new User(g).submit();
+            //g.addUser(new User(g));
+            //g.getLastUser().submit();
+            System.out.println(g.getRClassType());
+            System.out.println(g.getRClassNum());
 
         }
     }
